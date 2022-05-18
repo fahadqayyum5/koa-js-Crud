@@ -13,6 +13,8 @@ require("./config/connectDatabase")();
 
 const userRoutes = require("./routes/users");
 
+const productRoutes = require("./routes/products");
+
 const colors = require("colors");
 
 const server = new Koa();
@@ -50,6 +52,8 @@ server.use(cors());
 server.use(logger());
 
 server.use(userRoutes.routes());
+
+server.use(productRoutes.routes());
 
 const port = process.env.PORT || 5000;
 

@@ -2,6 +2,8 @@ const Koa = require("koa");
 
 require("dotenv").config();
 
+const cors = require("@koa/cors");
+
 const bodyParser = require("koa-bodyparser");
 
 const logger = require("koa-logger");
@@ -17,6 +19,9 @@ const server = new Koa();
 
 //Body Parser
 server.use(bodyParser());
+
+//Koa Cors
+server.use(cors());
 
 //Request Logger
 server.use(logger());

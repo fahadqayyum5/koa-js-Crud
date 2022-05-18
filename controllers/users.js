@@ -5,9 +5,10 @@ const createUser = async (ctx, next) => {
   console.log("Create User Called");
   const user = await User.findOne({ name: ctx.request.body.name });
   if (user) {
-    console.log("Error");
-    ctx.status = 400;
-    ctx.body = { success: false, error: "This User Already Exists" };
+    ctx.throw(400, "This User Already Exists");
+    // console.log("Error");
+    // ctx.status = 400;
+    // ctx.body = { success: false, error: "This User Already Exists" };
     return;
   }
 
@@ -18,6 +19,7 @@ const createUser = async (ctx, next) => {
 
 //Get All Users
 const getUsers = async (ctx, next) => {
+  ctx.throw(400, "Error Message");
   const users = await User.find();
   if (users.length < 0) {
     ctx.status = 404;
